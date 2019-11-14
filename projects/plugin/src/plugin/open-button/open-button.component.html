@@ -1,0 +1,39 @@
+<ion-button *ngIf="loading" expand="block" color="light" disabled>
+  <ion-icon name="film" slot="start"></ion-icon>
+  <ion-text>{{ 'searching' | translate }}</ion-text>
+</ion-button>
+
+<ng-container *ngIf="!loading">
+  <div *ngIf="result" class="button" (click)="goTo(result.url)">
+    <ion-icon name="film" slot="start"></ion-icon>
+    <span>
+      {{ result.title }}
+      <br />
+    </span>
+    <span *ngIf="result.rentalPrice > 0">
+      {{
+        'rentalPrice'
+          | translate
+            : {
+                price: result.rentalPrice,
+                currency: result.currency
+              }
+      }}
+      <br />
+    </span>
+    <span *ngIf="result.buyPrice > 0">
+      {{
+        'buyPrice'
+          | translate
+            : {
+                price: result.buyPrice,
+                currency: result.currency
+              }
+      }}
+    </span>
+  </div>
+  <ion-button *ngIf="!result" expand="block" color="light" disabled>
+    <ion-icon name="film" slot="start"></ion-icon>
+    <ion-text> {{ 'noResults' | translate }}</ion-text>
+  </ion-button>
+</ng-container>

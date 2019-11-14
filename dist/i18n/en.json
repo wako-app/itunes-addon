@@ -1,0 +1,6 @@
+{
+  "searching": "Searching on iTunes",
+  "rentalPrice": "Rent {{price}} {{currency}} on iTunes",
+  "buyPrice": "Buy {{price}} {{currency}} on iTunes",
+  "noResults": "Not found on iTunes"
+}
