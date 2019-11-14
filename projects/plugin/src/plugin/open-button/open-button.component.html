@@ -4,7 +4,7 @@
 </ion-button>
 
 <ng-container *ngIf="!loading">
-  <div *ngIf="result" class="button" (click)="goTo(result.url)">
+  <div *ngIf="result" class="container-button" (click)="goTo(result.url)">
     <ion-icon name="film" slot="start"></ion-icon>
     <span>
       {{ result.title }}
