@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BrowserService, Episode, Movie, Show } from '@wako-app/mobile-sdk';
 import { ItunesApiService, ItunesItemDto } from '../services/itunes-api.service';
 import { finalize } from 'rxjs/operators';
+import { logEvent } from '../services/tools';
 
 @Component({
   selector: 'wk-open-button',
@@ -41,5 +42,6 @@ export class OpenButtonComponent implements OnInit {
 
   goTo(trackViewUrl: string) {
     this.browserService.open(trackViewUrl);
+    logEvent('itunes_go_to', {type: this.movie ? 'movie' : 'tv-show'});
   }
 }
