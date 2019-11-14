@@ -42,6 +42,6 @@ export class OpenButtonComponent implements OnInit {
 
   goTo(trackViewUrl: string) {
     this.browserService.open(trackViewUrl);
-    logEvent('itunes_go_to', {type: this.movie ? 'movie' : 'tv-show'});
+    logEvent('addon_itunes', {type: this.movie ? 'movie' : 'tv-show'});
   }
 }
