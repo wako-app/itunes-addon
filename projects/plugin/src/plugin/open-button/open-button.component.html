@@ -5,32 +5,31 @@
 
 <ng-container *ngIf="!loading">
   <div *ngIf="result" class="container-button" (click)="goTo(result.url)">
-    <ion-icon name="film" slot="start"></ion-icon>
-    <span>
-      {{ result.title }}
-      <br />
-    </span>
-    <span *ngIf="result.rentalPrice > 0">
+      <span *ngIf="result.rentalPrice > 0">
       {{
-        'rentalPrice'
-          | translate
-            : {
-                price: result.rentalPrice,
-                currency: result.currency
+          'rentalPrice'
+              | translate
+              : {
+                  price: result.rentalPrice,
+                  currency: result.currency
               }
-      }}
-      <br />
+        }}
     </span>
+    {{result.rentalPrice > 0 && result.buyPrice > 0 ? '/' : ''}}
     <span *ngIf="result.buyPrice > 0">
       {{
         'buyPrice'
-          | translate
+            | translate
             : {
                 price: result.buyPrice,
                 currency: result.currency
-              }
+            }
       }}
     </span>
+    <em>
+      <br/>
+      {{ result.title }}
+    </em>
   </div>
   <ion-button *ngIf="!result" expand="block" color="light" disabled>
     <ion-icon name="film" slot="start"></ion-icon>

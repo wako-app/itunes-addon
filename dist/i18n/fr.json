@@ -1,6 +1,6 @@
 {
   "searching": "Recherche sur iTunes",
-  "rentalPrice": "Location {{price}} {{currency}} sur iTunes",
-  "buyPrice": "Achat {{price}} {{currency}} sur iTunes",
+  "rentalPrice": "Location {{price}} {{currency}}",
+  "buyPrice": "Achat {{price}} {{currency}}",
   "noResults": "Pas de résultat sur iTunes"
 }
