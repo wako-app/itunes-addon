@@ -1,5 +1,6 @@
 {
   "searching": "Recherche sur iTunes",
+  "preOrder": "Pre Commander",
   "rentalPrice": "Location {{price}} {{currency}}",
   "buyPrice": "Achat {{price}} {{currency}}",
   "noResults": "Pas de résultat sur iTunes"

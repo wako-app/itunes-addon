@@ -18,7 +18,7 @@ export class ItunesApiService {
     })
   }
 
-  getItem(term: string, media: 'movie' | 'tvShow', episodeName?: string) {
+  getItem(term: string, media: 'movie' | 'tvShow', year?: number, episodeName?: string) {
     return this.search(term, media)
       .pipe(
         map(dto => {
@@ -29,6 +29,7 @@ export class ItunesApiService {
           if (episodeName) {
             term += ' ' + episodeName;
           }
+
 
           let words = term
             .replace(/[^0-9a-z]/gi, ' ')
@@ -46,15 +47,24 @@ export class ItunesApiService {
               title = item.collectionName + ' ' + item.trackName;
             }
 
+            if (year && item.releaseDate) {
+              const _year = item.releaseDate.split('-').shift();
+              if (_year && +_year !== year) {
+                return;
+              }
+            }
+
             if (title.match(regex) !== null) {
               result = item;
             }
           });
 
           if (result) {
+            const preOrder = !(result.trackRentalPrice > 0 || result.trackPrice > 0 || result.collectionPrice > 0);
             return {
               rentalPrice: result.trackRentalPrice && result.trackRentalPrice > 0 ? result.trackRentalPrice : null,
               buyPrice: result.trackPrice > 0 || result.collectionPrice > 0 ? (result.trackPrice > 0 ? result.trackPrice : result.collectionPrice) : null,
+              preOrder: preOrder,
               title: result.collectionName && result.collectionName !== result.trackName ? result.collectionName + ' - ' + result.trackName : result.trackName,
               url: result.trackViewUrl,
               currency: result.currency
@@ -81,11 +91,13 @@ export interface ItunesSearchResultDto {
   trackRentalPrice: number;
   collectionPrice: number;
   currency: string;
+  releaseDate: string;
 }
 
 export interface ItunesItemDto {
   rentalPrice: number;
   buyPrice: number;
+  preOrder: boolean;
   title: string;
   currency: string;
   url: string;

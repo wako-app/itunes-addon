@@ -4,15 +4,18 @@
 
 <ng-container *ngIf="!loading">
   <div *ngIf="result" class="container-button" (click)="goTo(result.url)">
-      <span *ngIf="result.rentalPrice > 0">
+      <span *ngIf="result.preOrder">
+      {{'preOrder'| translate}}
+    </span>
+    <span *ngIf="result.rentalPrice > 0">
       {{
-          'rentalPrice'
-              | translate
-              : {
-                  price: result.rentalPrice,
-                  currency: result.currency
-              }
-        }}
+        'rentalPrice'
+            | translate
+            : {
+                price: result.rentalPrice,
+                currency: result.currency
+            }
+      }}
     </span>
     {{result.rentalPrice > 0 && result.buyPrice > 0 ? '/' : ''}}
     <span *ngIf="result.buyPrice > 0">

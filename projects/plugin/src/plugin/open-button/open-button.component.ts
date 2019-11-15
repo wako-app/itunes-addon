@@ -28,12 +28,13 @@ export class OpenButtonComponent implements OnInit {
     let mediaType = 'movie';
     let episodeCode = null;
     const term = this.movie ? this.movie.title : this.show.title + ' season ' + this.episode.traktSeasonNumber;
+    const year = this.movie ? this.movie.year : null;
     if (this.show) {
       mediaType = 'tvShow';
       episodeCode = this.episode.title;
     }
 
-    this.itunesApiService.getItem(term, mediaType as any, episodeCode)
+    this.itunesApiService.getItem(term, mediaType as any, year, episodeCode)
       .pipe(finalize(() => this.loading = false))
       .subscribe(data => {
         this.result = data;
