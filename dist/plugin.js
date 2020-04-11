@@ -1,1 +1,855 @@
-!function(n,e){"object"==typeof exports&&"object"==typeof module?module.exports=e(require("ng.common"),require("wako-app.mobile-sdk"),require("ngx-translate.core"),require("ng.core"),require("ionic.angular"),require("tslib"),require("ng.router"),require("ng.forms")):"function"==typeof define&&define.amd?define(["ng.common","wako-app.mobile-sdk","ngx-translate.core","ng.core","ionic.angular","tslib","ng.router","ng.forms"],e):"object"==typeof exports?exports.plugin=e(require("ng.common"),require("wako-app.mobile-sdk"),require("ngx-translate.core"),require("ng.core"),require("ionic.angular"),require("tslib"),require("ng.router"),require("ng.forms")):n.plugin=e(n["ng.common"],n["wako-app.mobile-sdk"],n["ngx-translate.core"],n["ng.core"],n["ionic.angular"],n.tslib,n["ng.router"],n["ng.forms"])}("undefined"!=typeof self?self:this,function(n,e,t,r,o,l,i,u){return function(n){var e={};function t(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return n[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}return t.m=n,t.c=e,t.d=function(n,e,r){t.o(n,e)||Object.defineProperty(n,e,{enumerable:!0,get:r})},t.r=function(n){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(n,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(n,"__esModule",{value:!0})},t.t=function(n,e){if(1&e&&(n=t(n)),8&e)return n;if(4&e&&"object"==typeof n&&n&&n.__esModule)return n;var r=Object.create(null);if(t.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:n}),2&e&&"string"!=typeof n)for(var o in n)t.d(r,o,(function(e){return n[e]}).bind(null,o));return r},t.n=function(n){var e=n&&n.__esModule?function(){return n.default}:function(){return n};return t.d(e,"a",e),e},t.o=function(n,e){return Object.prototype.hasOwnProperty.call(n,e)},t.p="",t(t.s=0)}({0:function(n,e,t){n.exports=t("zUnb")},"0S4P":function(e,t){e.exports=n},"17wl":function(n,e){n.exports=l},"3xDq":function(n,e){n.exports=u},FsH7:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=t("17wl"),o=t("vOrQ"),l=t("z1lQ"),i=t("TGDj");e.ToastService=function(){function n(n,e){this.toastCtrl=n,this.translateService=e}return n.prototype.simpleMessage=function(n,e,t,r){var o=this;void 0===t&&(t=2e3),void 0===r&&(r="top"),this.translateService.get(n,e).subscribe(function(n){o.toastCtrl.create({message:n,mode:"ios",position:r,duration:t}).then(function(n){n.present()})})},r.__decorate([o.Injectable(),r.__metadata("design:paramtypes",[l.ToastController,i.TranslateService])],n)}()},GoKE:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=t("17wl"),o=t("vOrQ"),l=t("z1lQ");e.BrowserService=function(){function n(n){this.platform=n}return n.prototype.open=function(n,e){void 0===e&&(e=!0),!1!==this.platform.is("cordova")&&e?SafariViewController.isAvailable(function(e){e?SafariViewController.show({url:n,hidden:!1,animated:!0,transition:"curl",enterReaderModeIfAvailable:!1,barColor:"#1f2d3f",tintColor:"#1f2d3f",controlTintColor:"#ffffff"}):window.open(n,"_system","location=yes")}):window.open(n,"_system","location=yes")},r.__decorate([o.Injectable(),r.__metadata("design:paramtypes",[l.Platform])],n)}()},JAnZ:function(n,e){n.exports=i},TGDj:function(n,e){n.exports=t},doF0:function(n,t){n.exports=e},vOrQ:function(n,e){n.exports=r},z1lQ:function(n,e){n.exports=o},zUnb:function(n,e,t){"use strict";t.r(e);var r=t("17wl"),o=t("doF0"),l=t("TGDj");function i(){for(var n=[],e=0;e<arguments.length;e++)n[e]=arguments[e];Object(o.wakoLog)("plugin.itunes",n)}var u=function(n){function e(e){var t=n.call(this)||this;return t.translate=e,t}return r.__extends(e,n),e.prototype.initialize=function(){i("plugin initialized")},e.prototype.afterInstall=function(){i("plugin installed")},e.prototype.afterUpdate=function(){i("plugin updated")},e.prototype.setTranslation=function(n,e){this.translate.setDefaultLang(n),this.translate.use(n),this.translate.setTranslation(n,e)},e}(o.PluginBaseService),s=function(n){function e(){return null!==n&&n.apply(this,arguments)||this}return r.__extends(e,n),e.prototype.setMovie=function(n){this.movie=n},e}(o.MovieDetailBaseComponent),a=function(n){function e(){return null!==n&&n.apply(this,arguments)||this}return r.__extends(e,n),e.prototype.setShowEpisode=function(n,e){this.show=n,this.episode=e},e}(o.EpisodeDetailBaseComponent),c=function(n){function e(){return null!==n&&n.apply(this,arguments)||this}return r.__extends(e,n),e.prototype.setShow=function(n){this.show=n},e}(o.ShowDetailBaseComponent),p=t("vOrQ");function d(n){return"function"==typeof n}var f=!1,h={Promise:void 0,set useDeprecatedSynchronousErrorHandling(n){f=n},get useDeprecatedSynchronousErrorHandling(){return f}};function b(n){setTimeout(function(){throw n},0)}var m={closed:!0,next:function(n){},error:function(n){if(h.useDeprecatedSynchronousErrorHandling)throw n;b(n)},complete:function(){}},g=Array.isArray||function(n){return n&&"number"==typeof n.length};function v(n){return Error.call(this),this.message=n?n.length+" errors occurred during unsubscription:\n"+n.map(function(n,e){return e+1+") "+n.toString()}).join("\n  "):"",this.name="UnsubscriptionError",this.errors=n,this}v.prototype=Object.create(Error.prototype);var y=v,_=function(){function n(n){this.closed=!1,this._parentOrParents=null,this._subscriptions=null,n&&(this._unsubscribe=n)}return n.prototype.unsubscribe=function(){var e;if(!this.closed){var t,r=this._parentOrParents,o=this._unsubscribe,l=this._subscriptions;if(this.closed=!0,this._parentOrParents=null,this._subscriptions=null,r instanceof n)r.remove(this);else if(null!==r)for(var i=0;i<r.length;++i)r[i].remove(this);if(d(o))try{o.call(this)}catch(a){e=a instanceof y?w(a.errors):[a]}if(g(l)){i=-1;for(var u=l.length;++i<u;){var s=l[i];if(null!==(t=s)&&"object"==typeof t)try{s.unsubscribe()}catch(a){e=e||[],a instanceof y?e=e.concat(w(a.errors)):e.push(a)}}}if(e)throw new y(e)}},n.prototype.add=function(e){var t=e;if(!e)return n.EMPTY;switch(typeof e){case"function":t=new n(e);case"object":if(t===this||t.closed||"function"!=typeof t.unsubscribe)return t;if(this.closed)return t.unsubscribe(),t;if(!(t instanceof n)){var r=t;(t=new n)._subscriptions=[r]}break;default:throw new Error("unrecognized teardown "+e+" added to Subscription.")}var o=t._parentOrParents;if(null===o)t._parentOrParents=this;else if(o instanceof n){if(o===this)return t;t._parentOrParents=[o,this]}else{if(-1!==o.indexOf(this))return t;o.push(this)}var l=this._subscriptions;return null===l?this._subscriptions=[t]:l.push(t),t},n.prototype.remove=function(n){var e=this._subscriptions;if(e){var t=e.indexOf(n);-1!==t&&e.splice(t,1)}},n.EMPTY=function(n){return n.closed=!0,n}(new n),n}();function w(n){return n.reduce(function(n,e){return n.concat(e instanceof y?e.errors:e)},[])}var S="function"==typeof Symbol?Symbol("rxSubscriber"):"@@rxSubscriber_"+Math.random(),T=function(n){function e(t,r,o){var l=n.call(this)||this;switch(l.syncErrorValue=null,l.syncErrorThrown=!1,l.syncErrorThrowable=!1,l.isStopped=!1,arguments.length){case 0:l.destination=m;break;case 1:if(!t){l.destination=m;break}if("object"==typeof t){t instanceof e?(l.syncErrorThrowable=t.syncErrorThrowable,l.destination=t,t.add(l)):(l.syncErrorThrowable=!0,l.destination=new x(l,t));break}default:l.syncErrorThrowable=!0,l.destination=new x(l,t,r,o)}return l}return r.__extends(e,n),e.prototype[S]=function(){return this},e.create=function(n,t,r){var o=new e(n,t,r);return o.syncErrorThrowable=!1,o},e.prototype.next=function(n){this.isStopped||this._next(n)},e.prototype.error=function(n){this.isStopped||(this.isStopped=!0,this._error(n))},e.prototype.complete=function(){this.isStopped||(this.isStopped=!0,this._complete())},e.prototype.unsubscribe=function(){this.closed||(this.isStopped=!0,n.prototype.unsubscribe.call(this))},e.prototype._next=function(n){this.destination.next(n)},e.prototype._error=function(n){this.destination.error(n),this.unsubscribe()},e.prototype._complete=function(){this.destination.complete(),this.unsubscribe()},e.prototype._unsubscribeAndRecycle=function(){var n=this._parentOrParents;return this._parentOrParents=null,this.unsubscribe(),this.closed=!1,this.isStopped=!1,this._parentOrParents=n,this},e}(_),x=function(n){function e(e,t,r,o){var l,i=n.call(this)||this;i._parentSubscriber=e;var u=i;return d(t)?l=t:t&&(l=t.next,r=t.error,o=t.complete,t!==m&&(d((u=Object.create(t)).unsubscribe)&&i.add(u.unsubscribe.bind(u)),u.unsubscribe=i.unsubscribe.bind(i))),i._context=u,i._next=l,i._error=r,i._complete=o,i}return r.__extends(e,n),e.prototype.next=function(n){if(!this.isStopped&&this._next){var e=this._parentSubscriber;h.useDeprecatedSynchronousErrorHandling&&e.syncErrorThrowable?this.__tryOrSetError(e,this._next,n)&&this.unsubscribe():this.__tryOrUnsub(this._next,n)}},e.prototype.error=function(n){if(!this.isStopped){var e=this._parentSubscriber,t=h.useDeprecatedSynchronousErrorHandling;if(this._error)t&&e.syncErrorThrowable?(this.__tryOrSetError(e,this._error,n),this.unsubscribe()):(this.__tryOrUnsub(this._error,n),this.unsubscribe());else if(e.syncErrorThrowable)t?(e.syncErrorValue=n,e.syncErrorThrown=!0):b(n),this.unsubscribe();else{if(this.unsubscribe(),t)throw n;b(n)}}},e.prototype.complete=function(){var n=this;if(!this.isStopped){var e=this._parentSubscriber;if(this._complete){var t=function(){return n._complete.call(n._context)};h.useDeprecatedSynchronousErrorHandling&&e.syncErrorThrowable?(this.__tryOrSetError(e,t),this.unsubscribe()):(this.__tryOrUnsub(t),this.unsubscribe())}else this.unsubscribe()}},e.prototype.__tryOrUnsub=function(n,e){try{n.call(this._context,e)}catch(t){if(this.unsubscribe(),h.useDeprecatedSynchronousErrorHandling)throw t;b(t)}},e.prototype.__tryOrSetError=function(n,e,t){if(!h.useDeprecatedSynchronousErrorHandling)throw new Error("bad call");try{e.call(this._context,t)}catch(r){return h.useDeprecatedSynchronousErrorHandling?(n.syncErrorValue=r,n.syncErrorThrown=!0,!0):(b(r),!0)}return!1},e.prototype._unsubscribe=function(){var n=this._parentSubscriber;this._context=null,this._parentSubscriber=null,n.unsubscribe()},e}(T),P=function(){function n(n,e){this.project=n,this.thisArg=e}return n.prototype.call=function(n,e){return e.subscribe(new E(n,this.project,this.thisArg))},n}(),E=function(n){function e(e,t,r){var o=n.call(this,e)||this;return o.project=t,o.count=0,o.thisArg=r||o,o}return r.__extends(e,n),e.prototype._next=function(n){var e;try{e=this.project.call(this.thisArg,n,this.count++)}catch(t){return void this.destination.error(t)}this.destination.next(e)},e}(T),k=function(){function n(){this.baseUrl="https://itunes.apple.com"}return n.prototype.search=function(n,e){return o.WakoHttpRequestService.get(this.baseUrl+"/search",{term:n.replace(/\s/g,"+"),media:e})},n.prototype.getItem=function(n,e,t,r){return this.search(n,e).pipe((o=function(e){if(0===e.resultCount)return null;r&&(n+=" "+r);var o=n.replace(/[^0-9a-z]/gi," ").split(" ").join(".*"),l=new RegExp(o,"ig"),i=null;return e.results.forEach(function(n){var e=n.trackName;if(n.collectionName&&n.collectionName!==n.trackName&&(e=n.collectionName+" "+n.trackName),t&&n.releaseDate){var r=n.releaseDate.split("-").shift();if(r&&+r!==t)return}null!==e.match(l)&&(i=n)}),i?{rentalPrice:i.trackRentalPrice&&i.trackRentalPrice>0?i.trackRentalPrice:null,buyPrice:i.trackPrice>0||i.collectionPrice>0?i.trackPrice>0?i.trackPrice:i.collectionPrice:null,preOrder:!(i.trackRentalPrice>0||i.trackPrice>0||i.collectionPrice>0),title:i.collectionName&&i.collectionName!==i.trackName?i.collectionName+" - "+i.trackName:i.trackName,url:i.trackViewUrl,currency:i.currency}:null},function(n){return n.lift(new P(o,void 0))}));var o},n}(),C=function(){function n(n){this.callback=n}return n.prototype.call=function(n,e){return e.subscribe(new O(n,this.callback))},n}(),O=function(n){function e(e,t){var r=n.call(this,e)||this;return r.add(new _(t)),r}return r.__extends(e,n),e}(T),R=function(){function n(n,e){this.browserService=n,this.itunesApiService=e,this.type="button",this.loading=!0,this.result=null}return n.prototype.ngOnInit=function(){var n=this;this.loading=!0;var e,t="movie",r=null;this.show&&(t="tvShow",r=this.episode.title),this.itunesApiService.getItem(this.movie?this.movie.title:this.show.title+" season "+this.episode.traktSeasonNumber,t,this.movie?this.movie.year:null,r).pipe((e=function(){return n.loading=!1},function(n){return n.lift(new C(e))})).subscribe(function(e){n.result=e})},n.prototype.goTo=function(n){this.browserService.open(n),"FirebasePlugin"in window&&window.FirebasePlugin.logEvent("addon_itunes",{type:this.movie?"movie":"tv-show"})},n}(),I=function(n){function e(){return null!==n&&n.apply(this,arguments)||this}return r.__extends(e,n),e.pluginService=u,e.movieComponent=s,e.episodeComponent=a,e.showComponent=c,e}(o.PluginBaseModule),D=t("z1lQ"),M=t("0S4P");t("JAnZ");var N=p["\u0275crt"]({encapsulation:2,styles:[],data:{}});function j(n){return p["\u0275vid"](2,[p["\u0275ncd"](null,0)],null,null)}var A=p["\u0275crt"]({encapsulation:2,styles:[],data:{}});function q(n){return p["\u0275vid"](2,[p["\u0275ncd"](null,0)],null,null)}var F=t("GoKE"),U=p["\u0275crt"]({encapsulation:0,styles:[[".container-button[_ngcontent-%COMP%]{border:3px solid var(--ion-color-light);background-color:transparent;border-radius:5px;padding:10px 15px;text-align:center;font-size:.8em}.container-button[_ngcontent-%COMP%]   em[_ngcontent-%COMP%]{font-size:.8em}"]],data:{}});function H(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,5,"ion-button",[["color","light"],["disabled",""],["expand","block"],["fill","outline"]],null,null,null,j,N)),p["\u0275did"](1,49152,null,0,D.IonButton,[p.ChangeDetectorRef,p.ElementRef,p.NgZone],{color:[0,"color"],disabled:[1,"disabled"],expand:[2,"expand"],fill:[3,"fill"]},null),(n()(),p["\u0275eld"](2,0,null,0,3,"ion-text",[],null,null,null,q,A)),p["\u0275did"](3,49152,null,0,D.IonText,[p.ChangeDetectorRef,p.ElementRef,p.NgZone],null,null),(n()(),p["\u0275ted"](4,0,["",""])),p["\u0275pid"](131072,l.TranslatePipe,[l.TranslateService,p.ChangeDetectorRef])],function(n,e){n(e,1,0,"light","","block","outline")},function(n,e){n(e,4,0,p["\u0275unv"](e,4,0,p["\u0275nov"](e,5).transform("searching")))})}function L(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,2,"span",[],null,null,null,null,null)),(n()(),p["\u0275ted"](1,null,[" "," "])),p["\u0275pid"](131072,l.TranslatePipe,[l.TranslateService,p.ChangeDetectorRef])],null,function(n,e){n(e,1,0,p["\u0275unv"](e,1,0,p["\u0275nov"](e,2).transform("preOrder")))})}function z(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,3,"span",[],null,null,null,null,null)),(n()(),p["\u0275ted"](1,null,[" "," "])),p["\u0275pod"](2,{price:0,currency:1}),p["\u0275pid"](131072,l.TranslatePipe,[l.TranslateService,p.ChangeDetectorRef])],null,function(n,e){var t=e.component,r=p["\u0275unv"](e,1,0,p["\u0275nov"](e,3).transform("rentalPrice",n(e,2,0,t.result.rentalPrice,t.result.currency)));n(e,1,0,r)})}function B(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,3,"span",[],null,null,null,null,null)),(n()(),p["\u0275ted"](1,null,[" "," "])),p["\u0275pod"](2,{price:0,currency:1}),p["\u0275pid"](131072,l.TranslatePipe,[l.TranslateService,p.ChangeDetectorRef])],null,function(n,e){var t=e.component,r=p["\u0275unv"](e,1,0,p["\u0275nov"](e,3).transform("buyPrice",n(e,2,0,t.result.buyPrice,t.result.currency)));n(e,1,0,r)})}function V(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,10,"div",[["class","container-button"]],null,[[null,"click"]],function(n,e,t){var r=!0,o=n.component;return"click"===e&&(r=!1!==o.goTo(o.result.url)&&r),r},null,null)),(n()(),p["\u0275and"](16777216,null,null,1,null,L)),p["\u0275did"](2,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),p["\u0275and"](16777216,null,null,1,null,z)),p["\u0275did"](4,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),p["\u0275ted"](5,null,[" "," "])),(n()(),p["\u0275and"](16777216,null,null,1,null,B)),p["\u0275did"](7,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),p["\u0275eld"](8,0,null,null,2,"em",[],null,null,null,null,null)),(n()(),p["\u0275eld"](9,0,null,null,0,"br",[],null,null,null,null,null)),(n()(),p["\u0275ted"](10,null,[" "," "]))],function(n,e){var t=e.component;n(e,2,0,t.result.preOrder),n(e,4,0,t.result.rentalPrice>0),n(e,7,0,t.result.buyPrice>0)},function(n,e){var t=e.component;n(e,5,0,t.result.rentalPrice>0&&t.result.buyPrice>0?"/":""),n(e,10,0,t.result.title)})}function Z(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,5,"ion-button",[["color","light"],["disabled",""],["expand","block"],["fill","outline"]],null,null,null,j,N)),p["\u0275did"](1,49152,null,0,D.IonButton,[p.ChangeDetectorRef,p.ElementRef,p.NgZone],{color:[0,"color"],disabled:[1,"disabled"],expand:[2,"expand"],fill:[3,"fill"]},null),(n()(),p["\u0275eld"](2,0,null,0,3,"ion-text",[],null,null,null,q,A)),p["\u0275did"](3,49152,null,0,D.IonText,[p.ChangeDetectorRef,p.ElementRef,p.NgZone],null,null),(n()(),p["\u0275ted"](4,0,[" ",""])),p["\u0275pid"](131072,l.TranslatePipe,[l.TranslateService,p.ChangeDetectorRef])],function(n,e){n(e,1,0,"light","","block","outline")},function(n,e){n(e,4,0,p["\u0275unv"](e,4,0,p["\u0275nov"](e,5).transform("noResults")))})}function Q(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,4,null,null,null,null,null,null,null)),(n()(),p["\u0275and"](16777216,null,null,1,null,V)),p["\u0275did"](2,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),p["\u0275and"](16777216,null,null,1,null,Z)),p["\u0275did"](4,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),p["\u0275and"](0,null,null,0))],function(n,e){var t=e.component;n(e,2,0,t.result),n(e,4,0,!t.result)},null)}function G(n){return p["\u0275vid"](0,[(n()(),p["\u0275and"](16777216,null,null,1,null,H)),p["\u0275did"](1,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),p["\u0275and"](16777216,null,null,1,null,Q)),p["\u0275did"](3,16384,null,0,M.NgIf,[p.ViewContainerRef,p.TemplateRef],{ngIf:[0,"ngIf"]},null)],function(n,e){var t=e.component;n(e,1,0,t.loading),n(e,3,0,!t.loading)},null)}function J(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,G,U)),p["\u0275did"](1,114688,null,0,R,[F.BrowserService,k],null,null)],function(n,e){n(e,1,0)},null)}var K=p["\u0275ccf"]("wk-open-button",R,J,{movie:"movie",show:"show",episode:"episode",type:"type"},{},[]),Y=p["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function W(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,G,U)),p["\u0275did"](1,114688,null,0,R,[F.BrowserService,k],{movie:[0,"movie"]},null)],function(n,e){n(e,1,0,e.component.movie)},null)}function X(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"ng-component",[],null,null,null,W,Y)),p["\u0275did"](1,49152,null,0,s,[],null,null)],null,null)}var $=p["\u0275ccf"]("ng-component",s,X,{},{},[]),nn=p["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function en(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,G,U)),p["\u0275did"](1,114688,null,0,R,[F.BrowserService,k],{show:[0,"show"],episode:[1,"episode"]},null)],function(n,e){var t=e.component;n(e,1,0,t.show,t.episode)},null)}function tn(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"ng-component",[],null,null,null,en,nn)),p["\u0275did"](1,49152,null,0,a,[],null,null)],null,null)}var rn=p["\u0275ccf"]("ng-component",a,tn,{},{},[]),on=p["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function ln(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,G,U)),p["\u0275did"](1,114688,null,0,R,[F.BrowserService,k],{show:[0,"show"]},null)],function(n,e){n(e,1,0,e.component.show)},null)}function un(n){return p["\u0275vid"](0,[(n()(),p["\u0275eld"](0,0,null,null,1,"ng-component",[],null,null,null,ln,on)),p["\u0275did"](1,49152,null,0,c,[],null,null)],null,null)}var sn=p["\u0275ccf"]("ng-component",c,un,{},{},[]),an=t("3xDq"),cn=t("FsH7"),pn=p["\u0275cmf"](I,[],function(n){return p["\u0275mod"]([p["\u0275mpd"](512,p.ComponentFactoryResolver,p["\u0275CodegenComponentFactoryResolver"],[[8,[$,rn,sn,K]],[3,p.ComponentFactoryResolver],p.NgModuleRef]),p["\u0275mpd"](4608,M.NgLocalization,M.NgLocaleLocalization,[p.LOCALE_ID,[2,M["\u0275angular_packages_common_common_a"]]]),p["\u0275mpd"](4608,an["\u0275angular_packages_forms_forms_o"],an["\u0275angular_packages_forms_forms_o"],[]),p["\u0275mpd"](4608,D.AngularDelegate,D.AngularDelegate,[p.NgZone,p.ApplicationRef]),p["\u0275mpd"](4608,D.ModalController,D.ModalController,[D.AngularDelegate,p.ComponentFactoryResolver,p.Injector]),p["\u0275mpd"](4608,D.PopoverController,D.PopoverController,[D.AngularDelegate,p.ComponentFactoryResolver,p.Injector]),p["\u0275mpd"](5120,p.APP_INITIALIZER,function(n,e,t){return[D["\u0275e"](n,e,t)]},[D["\u0275a"],M.DOCUMENT,p.NgZone]),p["\u0275mpd"](4608,l.TranslateLoader,l.TranslateFakeLoader,[]),p["\u0275mpd"](4608,l.TranslateCompiler,l.TranslateFakeCompiler,[]),p["\u0275mpd"](4608,l.TranslateParser,l.TranslateDefaultParser,[]),p["\u0275mpd"](4608,l.MissingTranslationHandler,l.FakeMissingTranslationHandler,[]),p["\u0275mpd"](4608,l.TranslateStore,l.TranslateStore,[]),p["\u0275mpd"](4608,l.TranslateService,l.TranslateService,[l.TranslateStore,l.TranslateLoader,l.TranslateCompiler,l.TranslateParser,l.MissingTranslationHandler,l.USE_DEFAULT_LANG,l.USE_STORE]),p["\u0275mpd"](4608,u,u,[l.TranslateService]),p["\u0275mpd"](4608,F.BrowserService,F.BrowserService,[D.Platform]),p["\u0275mpd"](4608,cn.ToastService,cn.ToastService,[D.ToastController,l.TranslateService]),p["\u0275mpd"](4608,k,k,[]),p["\u0275mpd"](1073742336,M.CommonModule,M.CommonModule,[]),p["\u0275mpd"](1073742336,an["\u0275angular_packages_forms_forms_d"],an["\u0275angular_packages_forms_forms_d"],[]),p["\u0275mpd"](1073742336,an.FormsModule,an.FormsModule,[]),p["\u0275mpd"](1073742336,D.IonicModule,D.IonicModule,[]),p["\u0275mpd"](1073742336,l.TranslateModule,l.TranslateModule,[]),p["\u0275mpd"](1073742336,I,I,[]),p["\u0275mpd"](256,D["\u0275a"],void 0,[]),p["\u0275mpd"](256,l.USE_STORE,void 0,[]),p["\u0275mpd"](256,l.USE_DEFAULT_LANG,void 0,[])])});t.d(e,"PluginModule",function(){return I}),t.d(e,"PluginModuleNgFactory",function(){return pn}),e.default=pn}})});
+!(function (e, t) {
+  'object' == typeof exports && 'object' == typeof module
+    ? (module.exports = t(
+        require('ng.common'),
+        require('tslib'),
+        require('ng.forms'),
+        require('ngx-translate.core'),
+        require('wako-app.mobile-sdk'),
+        require('ng.core'),
+        require('ionic.angular')
+      ))
+    : 'function' == typeof define && define.amd
+    ? define(['ng.common', 'tslib', 'ng.forms', 'ngx-translate.core', 'wako-app.mobile-sdk', 'ng.core', 'ionic.angular'], t)
+    : 'object' == typeof exports
+    ? (exports.plugin = t(
+        require('ng.common'),
+        require('tslib'),
+        require('ng.forms'),
+        require('ngx-translate.core'),
+        require('wako-app.mobile-sdk'),
+        require('ng.core'),
+        require('ionic.angular')
+      ))
+    : (e.plugin = t(
+        e['ng.common'],
+        e.tslib,
+        e['ng.forms'],
+        e['ngx-translate.core'],
+        e['wako-app.mobile-sdk'],
+        e['ng.core'],
+        e['ionic.angular']
+      ));
+})('undefined' != typeof self ? self : this, function (e, t, n, r, o, i, s) {
+  return (function (e) {
+    var t = {};
+    function n(r) {
+      if (t[r]) return t[r].exports;
+      var o = (t[r] = { i: r, l: !1, exports: {} });
+      return e[r].call(o.exports, o, o.exports, n), (o.l = !0), o.exports;
+    }
+    return (
+      (n.m = e),
+      (n.c = t),
+      (n.d = function (e, t, r) {
+        n.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: r });
+      }),
+      (n.r = function (e) {
+        'undefined' != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+          Object.defineProperty(e, '__esModule', { value: !0 });
+      }),
+      (n.t = function (e, t) {
+        if ((1 & t && (e = n(e)), 8 & t)) return e;
+        if (4 & t && 'object' == typeof e && e && e.__esModule) return e;
+        var r = Object.create(null);
+        if ((n.r(r), Object.defineProperty(r, 'default', { enumerable: !0, value: e }), 2 & t && 'string' != typeof e))
+          for (var o in e)
+            n.d(
+              r,
+              o,
+              function (t) {
+                return e[t];
+              }.bind(null, o)
+            );
+        return r;
+      }),
+      (n.n = function (e) {
+        var t =
+          e && e.__esModule
+            ? function () {
+                return e.default;
+              }
+            : function () {
+                return e;
+              };
+        return n.d(t, 'a', t), t;
+      }),
+      (n.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t);
+      }),
+      (n.p = ''),
+      n((n.s = 0))
+    );
+  })({
+    0: function (e, t, n) {
+      e.exports = n('zUnb');
+    },
+    '0S4P': function (t, n) {
+      t.exports = e;
+    },
+    '17wl': function (e, n) {
+      e.exports = t;
+    },
+    '3xDq': function (e, t) {
+      e.exports = n;
+    },
+    TGDj: function (e, t) {
+      e.exports = r;
+    },
+    doF0: function (e, t) {
+      e.exports = o;
+    },
+    vOrQ: function (e, t) {
+      e.exports = i;
+    },
+    z1lQ: function (e, t) {
+      e.exports = s;
+    },
+    zUnb: function (e, t, n) {
+      'use strict';
+      n.r(t),
+        n.d(t, 'PluginModule', function () {
+          return Q;
+        });
+      var r = n('17wl'),
+        o = n('0S4P'),
+        i = n('z1lQ'),
+        s = n('doF0'),
+        c = n('TGDj');
+      function u() {
+        for (var e = [], t = 0; t < arguments.length; t++) e[t] = arguments[t];
+        Object(s.wakoLog)('plugin.itunes', e);
+      }
+      var a = n('vOrQ'),
+        l = (function (e) {
+          function t(t) {
+            var n = e.call(this) || this;
+            return (n.translate = t), n;
+          }
+          return (
+            Object(r.__extends)(t, e),
+            (t.prototype.initialize = function () {
+              u('plugin initialized');
+            }),
+            (t.prototype.afterInstall = function () {
+              u('plugin installed');
+            }),
+            (t.prototype.afterUpdate = function () {
+              u('plugin updated');
+            }),
+            (t.prototype.setTranslation = function (e, t) {
+              this.translate.setDefaultLang(e), this.translate.use(e), this.translate.setTranslation(e, t);
+            }),
+            (t.prototype.customAction = function (e, t) {}),
+            (t.ɵfac = function (e) {
+              return new (e || t)(a['\u0275\u0275inject'](c.TranslateService));
+            }),
+            (t.ɵprov = a['\u0275\u0275defineInjectable']({ token: t, factory: t.ɵfac })),
+            t
+          );
+        })(s.PluginBaseService);
+      function p(e) {
+        return 'function' == typeof e;
+      }
+      var f = !1,
+        h = {
+          Promise: void 0,
+          set useDeprecatedSynchronousErrorHandling(e) {
+            f = e;
+          },
+          get useDeprecatedSynchronousErrorHandling() {
+            return f;
+          }
+        };
+      function d(e) {
+        setTimeout(function () {
+          throw e;
+        }, 0);
+      }
+      var b = {
+          closed: !0,
+          next: function (e) {},
+          error: function (e) {
+            if (h.useDeprecatedSynchronousErrorHandling) throw e;
+            d(e);
+          },
+          complete: function () {}
+        },
+        y = (function () {
+          return (
+            Array.isArray ||
+            function (e) {
+              return e && 'number' == typeof e.length;
+            }
+          );
+        })(),
+        m = (function () {
+          function e(e) {
+            return (
+              Error.call(this),
+              (this.message = e
+                ? e.length +
+                  ' errors occurred during unsubscription:\n' +
+                  e
+                    .map(function (e, t) {
+                      return t + 1 + ') ' + e.toString();
+                    })
+                    .join('\n  ')
+                : ''),
+              (this.name = 'UnsubscriptionError'),
+              (this.errors = e),
+              this
+            );
+          }
+          return (e.prototype = Object.create(Error.prototype)), e;
+        })(),
+        v = (function () {
+          function e(e) {
+            (this.closed = !1), (this._parentOrParents = null), (this._subscriptions = null), e && (this._unsubscribe = e);
+          }
+          return (
+            (e.prototype.unsubscribe = function () {
+              var t;
+              if (!this.closed) {
+                var n,
+                  r = this._parentOrParents,
+                  o = this._unsubscribe,
+                  i = this._subscriptions;
+                if (((this.closed = !0), (this._parentOrParents = null), (this._subscriptions = null), r instanceof e)) r.remove(this);
+                else if (null !== r) for (var s = 0; s < r.length; ++s) r[s].remove(this);
+                if (p(o))
+                  try {
+                    o.call(this);
+                  } catch (a) {
+                    t = a instanceof m ? g(a.errors) : [a];
+                  }
+                if (y(i)) {
+                  s = -1;
+                  for (var c = i.length; ++s < c; ) {
+                    var u = i[s];
+                    if (null !== (n = u) && 'object' == typeof n)
+                      try {
+                        u.unsubscribe();
+                      } catch (a) {
+                        (t = t || []), a instanceof m ? (t = t.concat(g(a.errors))) : t.push(a);
+                      }
+                  }
+                }
+                if (t) throw new m(t);
+              }
+            }),
+            (e.prototype.add = function (t) {
+              var n = t;
+              if (!t) return e.EMPTY;
+              switch (typeof t) {
+                case 'function':
+                  n = new e(t);
+                case 'object':
+                  if (n === this || n.closed || 'function' != typeof n.unsubscribe) return n;
+                  if (this.closed) return n.unsubscribe(), n;
+                  if (!(n instanceof e)) {
+                    var r = n;
+                    (n = new e())._subscriptions = [r];
+                  }
+                  break;
+                default:
+                  throw new Error('unrecognized teardown ' + t + ' added to Subscription.');
+              }
+              var o = n._parentOrParents;
+              if (null === o) n._parentOrParents = this;
+              else if (o instanceof e) {
+                if (o === this) return n;
+                n._parentOrParents = [o, this];
+              } else {
+                if (-1 !== o.indexOf(this)) return n;
+                o.push(this);
+              }
+              var i = this._subscriptions;
+              return null === i ? (this._subscriptions = [n]) : i.push(n), n;
+            }),
+            (e.prototype.remove = function (e) {
+              var t = this._subscriptions;
+              if (t) {
+                var n = t.indexOf(e);
+                -1 !== n && t.splice(n, 1);
+              }
+            }),
+            (e.EMPTY = (function (e) {
+              return (e.closed = !0), e;
+            })(new e())),
+            e
+          );
+        })();
+      function g(e) {
+        return e.reduce(function (e, t) {
+          return e.concat(t instanceof m ? t.errors : t);
+        }, []);
+      }
+      var _ = (function () {
+          return 'function' == typeof Symbol ? Symbol('rxSubscriber') : '@@rxSubscriber_' + Math.random();
+        })(),
+        x = (function (e) {
+          function t(n, r, o) {
+            var i = e.call(this) || this;
+            switch (
+              ((i.syncErrorValue = null), (i.syncErrorThrown = !1), (i.syncErrorThrowable = !1), (i.isStopped = !1), arguments.length)
+            ) {
+              case 0:
+                i.destination = b;
+                break;
+              case 1:
+                if (!n) {
+                  i.destination = b;
+                  break;
+                }
+                if ('object' == typeof n) {
+                  n instanceof t
+                    ? ((i.syncErrorThrowable = n.syncErrorThrowable), (i.destination = n), n.add(i))
+                    : ((i.syncErrorThrowable = !0), (i.destination = new w(i, n)));
+                  break;
+                }
+              default:
+                (i.syncErrorThrowable = !0), (i.destination = new w(i, n, r, o));
+            }
+            return i;
+          }
+          return (
+            r.__extends(t, e),
+            (t.prototype[_] = function () {
+              return this;
+            }),
+            (t.create = function (e, n, r) {
+              var o = new t(e, n, r);
+              return (o.syncErrorThrowable = !1), o;
+            }),
+            (t.prototype.next = function (e) {
+              this.isStopped || this._next(e);
+            }),
+            (t.prototype.error = function (e) {
+              this.isStopped || ((this.isStopped = !0), this._error(e));
+            }),
+            (t.prototype.complete = function () {
+              this.isStopped || ((this.isStopped = !0), this._complete());
+            }),
+            (t.prototype.unsubscribe = function () {
+              this.closed || ((this.isStopped = !0), e.prototype.unsubscribe.call(this));
+            }),
+            (t.prototype._next = function (e) {
+              this.destination.next(e);
+            }),
+            (t.prototype._error = function (e) {
+              this.destination.error(e), this.unsubscribe();
+            }),
+            (t.prototype._complete = function () {
+              this.destination.complete(), this.unsubscribe();
+            }),
+            (t.prototype._unsubscribeAndRecycle = function () {
+              var e = this._parentOrParents;
+              return (
+                (this._parentOrParents = null),
+                this.unsubscribe(),
+                (this.closed = !1),
+                (this.isStopped = !1),
+                (this._parentOrParents = e),
+                this
+              );
+            }),
+            t
+          );
+        })(v),
+        w = (function (e) {
+          function t(t, n, r, o) {
+            var i,
+              s = e.call(this) || this;
+            s._parentSubscriber = t;
+            var c = s;
+            return (
+              p(n)
+                ? (i = n)
+                : n &&
+                  ((i = n.next),
+                  (r = n.error),
+                  (o = n.complete),
+                  n !== b &&
+                    (p((c = Object.create(n)).unsubscribe) && s.add(c.unsubscribe.bind(c)), (c.unsubscribe = s.unsubscribe.bind(s)))),
+              (s._context = c),
+              (s._next = i),
+              (s._error = r),
+              (s._complete = o),
+              s
+            );
+          }
+          return (
+            r.__extends(t, e),
+            (t.prototype.next = function (e) {
+              if (!this.isStopped && this._next) {
+                var t = this._parentSubscriber;
+                h.useDeprecatedSynchronousErrorHandling && t.syncErrorThrowable
+                  ? this.__tryOrSetError(t, this._next, e) && this.unsubscribe()
+                  : this.__tryOrUnsub(this._next, e);
+              }
+            }),
+            (t.prototype.error = function (e) {
+              if (!this.isStopped) {
+                var t = this._parentSubscriber,
+                  n = h.useDeprecatedSynchronousErrorHandling;
+                if (this._error)
+                  n && t.syncErrorThrowable
+                    ? (this.__tryOrSetError(t, this._error, e), this.unsubscribe())
+                    : (this.__tryOrUnsub(this._error, e), this.unsubscribe());
+                else if (t.syncErrorThrowable) n ? ((t.syncErrorValue = e), (t.syncErrorThrown = !0)) : d(e), this.unsubscribe();
+                else {
+                  if ((this.unsubscribe(), n)) throw e;
+                  d(e);
+                }
+              }
+            }),
+            (t.prototype.complete = function () {
+              var e = this;
+              if (!this.isStopped) {
+                var t = this._parentSubscriber;
+                if (this._complete) {
+                  var n = function () {
+                    return e._complete.call(e._context);
+                  };
+                  h.useDeprecatedSynchronousErrorHandling && t.syncErrorThrowable
+                    ? (this.__tryOrSetError(t, n), this.unsubscribe())
+                    : (this.__tryOrUnsub(n), this.unsubscribe());
+                } else this.unsubscribe();
+              }
+            }),
+            (t.prototype.__tryOrUnsub = function (e, t) {
+              try {
+                e.call(this._context, t);
+              } catch (n) {
+                if ((this.unsubscribe(), h.useDeprecatedSynchronousErrorHandling)) throw n;
+                d(n);
+              }
+            }),
+            (t.prototype.__tryOrSetError = function (e, t, n) {
+              if (!h.useDeprecatedSynchronousErrorHandling) throw new Error('bad call');
+              try {
+                t.call(this._context, n);
+              } catch (r) {
+                return h.useDeprecatedSynchronousErrorHandling ? ((e.syncErrorValue = r), (e.syncErrorThrown = !0), !0) : (d(r), !0);
+              }
+              return !1;
+            }),
+            (t.prototype._unsubscribe = function () {
+              var e = this._parentSubscriber;
+              (this._context = null), (this._parentSubscriber = null), e.unsubscribe();
+            }),
+            t
+          );
+        })(x),
+        S = (function () {
+          function e(e, t) {
+            (this.project = e), (this.thisArg = t);
+          }
+          return (
+            (e.prototype.call = function (e, t) {
+              return t.subscribe(new E(e, this.project, this.thisArg));
+            }),
+            e
+          );
+        })(),
+        E = (function (e) {
+          function t(t, n, r) {
+            var o = e.call(this, t) || this;
+            return (o.project = n), (o.count = 0), (o.thisArg = r || o), o;
+          }
+          return (
+            r.__extends(t, e),
+            (t.prototype._next = function (e) {
+              var t;
+              try {
+                t = this.project.call(this.thisArg, e, this.count++);
+              } catch (n) {
+                return void this.destination.error(n);
+              }
+              this.destination.next(t);
+            }),
+            t
+          );
+        })(x),
+        P = (function () {
+          function e() {
+            this.baseUrl = 'https://itunes.apple.com';
+          }
+          return (
+            (e.prototype.search = function (e, t) {
+              return s.WakoHttpRequestService.get(this.baseUrl + '/search', { term: e.replace(/\s/g, '+'), media: t });
+            }),
+            (e.prototype.getItem = function (e, t, n, r) {
+              return this.search(e, t).pipe(
+                ((o = function (t) {
+                  if (0 === t.resultCount) return null;
+                  r && (e += ' ' + r);
+                  var o = e
+                      .replace(/[^0-9a-z]/gi, ' ')
+                      .split(' ')
+                      .join('.*'),
+                    i = new RegExp(o, 'ig'),
+                    s = null;
+                  return (
+                    t.results.forEach(function (e) {
+                      var t = e.trackName;
+                      if (
+                        (e.collectionName && e.collectionName !== e.trackName && (t = e.collectionName + ' ' + e.trackName),
+                        n && e.releaseDate)
+                      ) {
+                        var r = e.releaseDate.split('-').shift();
+                        if (r && +r !== n) return;
+                      }
+                      null !== t.match(i) && (s = e);
+                    }),
+                    s
+                      ? {
+                          rentalPrice: s.trackRentalPrice && s.trackRentalPrice > 0 ? s.trackRentalPrice : null,
+                          buyPrice:
+                            s.trackPrice > 0 || s.collectionPrice > 0 ? (s.trackPrice > 0 ? s.trackPrice : s.collectionPrice) : null,
+                          preOrder: !(s.trackRentalPrice > 0 || s.trackPrice > 0 || s.collectionPrice > 0),
+                          title:
+                            s.collectionName && s.collectionName !== s.trackName ? s.collectionName + ' - ' + s.trackName : s.trackName,
+                          url: s.trackViewUrl,
+                          currency: s.currency
+                        }
+                      : null
+                  );
+                }),
+                function (e) {
+                  return e.lift(new S(o, void 0));
+                })
+              );
+              var o;
+            }),
+            (e.ɵprov = a['\u0275\u0275defineInjectable']({
+              token: e,
+              factory: (e.ɵfac = function (t) {
+                return new (t || e)();
+              })
+            })),
+            e
+          );
+        })(),
+        k = (function () {
+          function e(e) {
+            this.callback = e;
+          }
+          return (
+            (e.prototype.call = function (e, t) {
+              return t.subscribe(new O(e, this.callback));
+            }),
+            e
+          );
+        })(),
+        O = (function (e) {
+          function t(t, n) {
+            var r = e.call(this, t) || this;
+            return r.add(new v(n)), r;
+          }
+          return r.__extends(t, e), t;
+        })(x);
+      function I(e, t) {
+        1 & e &&
+          (a['\u0275\u0275elementStart'](0, 'ion-button', 2),
+          a['\u0275\u0275elementStart'](1, 'ion-text'),
+          a['\u0275\u0275text'](2),
+          a['\u0275\u0275pipe'](3, 'translate'),
+          a['\u0275\u0275elementEnd'](),
+          a['\u0275\u0275elementEnd']()),
+          2 & e && (a['\u0275\u0275advance'](2), a['\u0275\u0275textInterpolate'](a['\u0275\u0275pipeBind1'](3, 1, 'searching')));
+      }
+      function j(e, t) {
+        1 & e &&
+          (a['\u0275\u0275elementStart'](0, 'span'),
+          a['\u0275\u0275text'](1),
+          a['\u0275\u0275pipe'](2, 'translate'),
+          a['\u0275\u0275elementEnd']()),
+          2 & e && (a['\u0275\u0275advance'](1), a['\u0275\u0275textInterpolate1'](' ', a['\u0275\u0275pipeBind1'](2, 1, 'preOrder'), ' '));
+      }
+      var T = function (e, t) {
+        return { price: e, currency: t };
+      };
+      function C(e, t) {
+        if (
+          (1 & e &&
+            (a['\u0275\u0275elementStart'](0, 'span'),
+            a['\u0275\u0275text'](1),
+            a['\u0275\u0275pipe'](2, 'translate'),
+            a['\u0275\u0275elementEnd']()),
+          2 & e)
+        ) {
+          var n = a['\u0275\u0275nextContext'](3);
+          a['\u0275\u0275advance'](1),
+            a['\u0275\u0275textInterpolate1'](
+              ' ',
+              a['\u0275\u0275pipeBind2'](
+                2,
+                1,
+                'rentalPrice',
+                a['\u0275\u0275pureFunction2'](4, T, n.result.rentalPrice, n.result.currency)
+              ),
+              ' '
+            );
+        }
+      }
+      function D(e, t) {
+        if (
+          (1 & e &&
+            (a['\u0275\u0275elementStart'](0, 'span'),
+            a['\u0275\u0275text'](1),
+            a['\u0275\u0275pipe'](2, 'translate'),
+            a['\u0275\u0275elementEnd']()),
+          2 & e)
+        ) {
+          var n = a['\u0275\u0275nextContext'](3);
+          a['\u0275\u0275advance'](1),
+            a['\u0275\u0275textInterpolate1'](
+              ' ',
+              a['\u0275\u0275pipeBind2'](2, 1, 'buyPrice', a['\u0275\u0275pureFunction2'](4, T, n.result.buyPrice, n.result.currency)),
+              ' '
+            );
+        }
+      }
+      function M(e, t) {
+        if (1 & e) {
+          var n = a['\u0275\u0275getCurrentView']();
+          a['\u0275\u0275elementStart'](0, 'div', 4),
+            a['\u0275\u0275listener']('click', function () {
+              a['\u0275\u0275restoreView'](n);
+              var e = a['\u0275\u0275nextContext'](2);
+              return e.goTo(e.result.url);
+            }),
+            a['\u0275\u0275template'](1, j, 3, 3, 'span', 1),
+            a['\u0275\u0275template'](2, C, 3, 7, 'span', 1),
+            a['\u0275\u0275text'](3),
+            a['\u0275\u0275template'](4, D, 3, 7, 'span', 1),
+            a['\u0275\u0275elementStart'](5, 'em'),
+            a['\u0275\u0275element'](6, 'br'),
+            a['\u0275\u0275text'](7),
+            a['\u0275\u0275elementEnd'](),
+            a['\u0275\u0275elementEnd']();
+        }
+        if (2 & e) {
+          var r = a['\u0275\u0275nextContext'](2);
+          a['\u0275\u0275advance'](1),
+            a['\u0275\u0275property']('ngIf', r.result.preOrder),
+            a['\u0275\u0275advance'](1),
+            a['\u0275\u0275property']('ngIf', r.result.rentalPrice > 0),
+            a['\u0275\u0275advance'](1),
+            a['\u0275\u0275textInterpolate1'](' ', r.result.rentalPrice > 0 && r.result.buyPrice > 0 ? '/' : '', ' '),
+            a['\u0275\u0275advance'](1),
+            a['\u0275\u0275property']('ngIf', r.result.buyPrice > 0),
+            a['\u0275\u0275advance'](3),
+            a['\u0275\u0275textInterpolate1'](' ', r.result.title, ' ');
+        }
+      }
+      function q(e, t) {
+        1 & e &&
+          (a['\u0275\u0275elementStart'](0, 'ion-button', 2),
+          a['\u0275\u0275elementStart'](1, 'ion-text'),
+          a['\u0275\u0275text'](2),
+          a['\u0275\u0275pipe'](3, 'translate'),
+          a['\u0275\u0275elementEnd'](),
+          a['\u0275\u0275elementEnd']()),
+          2 & e && (a['\u0275\u0275advance'](2), a['\u0275\u0275textInterpolate1'](' ', a['\u0275\u0275pipeBind1'](3, 1, 'noResults'), ''));
+      }
+      function N(e, t) {
+        if (
+          (1 & e &&
+            (a['\u0275\u0275elementContainerStart'](0),
+            a['\u0275\u0275template'](1, M, 8, 5, 'div', 3),
+            a['\u0275\u0275template'](2, q, 4, 3, 'ion-button', 0),
+            a['\u0275\u0275elementContainerEnd']()),
+          2 & e)
+        ) {
+          var n = a['\u0275\u0275nextContext']();
+          a['\u0275\u0275advance'](1),
+            a['\u0275\u0275property']('ngIf', n.result),
+            a['\u0275\u0275advance'](1),
+            a['\u0275\u0275property']('ngIf', !n.result);
+        }
+      }
+      var F = (function () {
+          function e(e) {
+            (this.itunesApiService = e), (this.type = 'button'), (this.loading = !0), (this.result = null);
+          }
+          return (
+            (e.prototype.ngOnInit = function () {
+              var e = this;
+              this.loading = !0;
+              var t,
+                n = 'movie',
+                r = null;
+              this.show && ((n = 'tvShow'), (r = this.episode.title)),
+                this.itunesApiService
+                  .getItem(
+                    this.movie ? this.movie.title : this.show.title + ' season ' + this.episode.traktSeasonNumber,
+                    n,
+                    this.movie ? this.movie.year : null,
+                    r
+                  )
+                  .pipe(
+                    ((t = function () {
+                      return (e.loading = !1);
+                    }),
+                    function (e) {
+                      return e.lift(new k(t));
+                    })
+                  )
+                  .subscribe(function (t) {
+                    e.result = t;
+                  });
+            }),
+            (e.prototype.goTo = function (e) {
+              s.BrowserService.open(e),
+                'FirebasePlugin' in window && window.FirebasePlugin.logEvent('addon_itunes', { type: this.movie ? 'movie' : 'tv-show' });
+            }),
+            (e.ɵfac = function (t) {
+              return new (t || e)(a['\u0275\u0275directiveInject'](P));
+            }),
+            (e.ɵcmp = a['\u0275\u0275defineComponent']({
+              type: e,
+              selectors: [['wk-open-button']],
+              inputs: { movie: 'movie', show: 'show', episode: 'episode', type: 'type' },
+              decls: 2,
+              vars: 2,
+              consts: [
+                ['color', 'light', 'expand', 'block', 'fill', 'outline', 'disabled', '', 4, 'ngIf'],
+                [4, 'ngIf'],
+                ['color', 'light', 'expand', 'block', 'fill', 'outline', 'disabled', ''],
+                ['class', 'container-button', 3, 'click', 4, 'ngIf'],
+                [1, 'container-button', 3, 'click']
+              ],
+              template: function (e, t) {
+                1 & e && (a['\u0275\u0275template'](0, I, 4, 3, 'ion-button', 0), a['\u0275\u0275template'](1, N, 3, 2, 'ng-container', 1)),
+                  2 & e &&
+                    (a['\u0275\u0275property']('ngIf', t.loading),
+                    a['\u0275\u0275advance'](1),
+                    a['\u0275\u0275property']('ngIf', !t.loading));
+              },
+              directives: [o.NgIf, i.IonButton, i.IonText],
+              pipes: [c.TranslatePipe],
+              styles: [
+                '.container-button[_ngcontent-%COMP%]{border:3px solid var(--ion-color-light);background-color:transparent;border-radius:5px;padding:10px 15px;text-align:center;font-size:.8em}.container-button[_ngcontent-%COMP%]   em[_ngcontent-%COMP%]{font-size:.8em}'
+              ]
+            })),
+            e
+          );
+        })(),
+        B = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(r.__extends)(t, e),
+            (t.prototype.setMovie = function (e) {
+              this.movie = e;
+            }),
+            (t.ɵfac = function (e) {
+              return U(e || t);
+            }),
+            (t.ɵcmp = a['\u0275\u0275defineComponent']({
+              type: t,
+              selectors: [['ng-component']],
+              features: [a['\u0275\u0275InheritDefinitionFeature']],
+              decls: 1,
+              vars: 1,
+              consts: [[3, 'movie']],
+              template: function (e, t) {
+                1 & e && a['\u0275\u0275element'](0, 'wk-open-button', 0), 2 & e && a['\u0275\u0275property']('movie', t.movie);
+              },
+              directives: [F],
+              styles: ['']
+            })),
+            t
+          );
+        })(s.MovieDetailBaseComponent),
+        U = a['\u0275\u0275getInheritedFactory'](B),
+        z = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(r.__extends)(t, e),
+            (t.prototype.setShowEpisode = function (e, t) {
+              (this.show = e), (this.episode = t);
+            }),
+            (t.ɵfac = function (e) {
+              return A(e || t);
+            }),
+            (t.ɵcmp = a['\u0275\u0275defineComponent']({
+              type: t,
+              selectors: [['ng-component']],
+              features: [a['\u0275\u0275InheritDefinitionFeature']],
+              decls: 1,
+              vars: 2,
+              consts: [[3, 'show', 'episode']],
+              template: function (e, t) {
+                1 & e && a['\u0275\u0275element'](0, 'wk-open-button', 0),
+                  2 & e && a['\u0275\u0275property']('show', t.show)('episode', t.episode);
+              },
+              directives: [F],
+              styles: ['']
+            })),
+            t
+          );
+        })(s.EpisodeDetailBaseComponent),
+        A = a['\u0275\u0275getInheritedFactory'](z),
+        H = n('3xDq'),
+        R = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(r.__extends)(t, e),
+            (t.prototype.setShow = function (e) {
+              this.show = e;
+            }),
+            (t.ɵfac = function (e) {
+              return V(e || t);
+            }),
+            (t.ɵcmp = a['\u0275\u0275defineComponent']({
+              type: t,
+              selectors: [['ng-component']],
+              features: [a['\u0275\u0275InheritDefinitionFeature']],
+              decls: 1,
+              vars: 1,
+              consts: [[3, 'show']],
+              template: function (e, t) {
+                1 & e && a['\u0275\u0275element'](0, 'wk-open-button', 0), 2 & e && a['\u0275\u0275property']('show', t.show);
+              },
+              directives: [F],
+              styles: ['']
+            })),
+            t
+          );
+        })(s.ShowDetailBaseComponent),
+        V = a['\u0275\u0275getInheritedFactory'](R),
+        Q = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(r.__extends)(t, e),
+            (t.pluginService = l),
+            (t.movieComponent = B),
+            (t.episodeComponent = z),
+            (t.showComponent = R),
+            (t.ɵmod = a['\u0275\u0275defineNgModule']({ type: t })),
+            (t.ɵinj = a['\u0275\u0275defineInjector']({
+              factory: function (e) {
+                return G(e || t);
+              },
+              providers: [l, P],
+              imports: [[o.CommonModule, H.FormsModule, i.IonicModule.forRoot(), c.TranslateModule.forRoot()]]
+            })),
+            t
+          );
+        })(s.PluginBaseModule),
+        G = a['\u0275\u0275getInheritedFactory'](Q);
+      t.default = Q;
+    }
+  });
+});

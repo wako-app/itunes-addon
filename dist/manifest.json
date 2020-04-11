@@ -5,11 +5,9 @@
   "name": "Watch on iTunes",
   "description": "Add a button to rent/buy the content on iTunes",
   "author": "wako",
-  "actions": [
-    "movies",
-    "episodes"
-  ],
-  "entryPoint": "/plugin.js",
+  "actions": ["movies", "episodes"],
+  "entryPointV2": "/plugin.js",
+  "entryPoint": "https://raw.githubusercontent.com/wako-app/itunes-addon/wako3/dist/manifest.json",
   "languages": {
     "en": "/i18n/en.json",
     "fr": "/i18n/fr.json"

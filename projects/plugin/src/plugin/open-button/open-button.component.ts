@@ -19,9 +19,7 @@ export class OpenButtonComponent implements OnInit {
 
   result: ItunesItemDto = null;
 
-  constructor(private browserService: BrowserService, private itunesApiService: ItunesApiService) {
-
-  }
+  constructor(private itunesApiService: ItunesApiService) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -34,15 +32,16 @@ export class OpenButtonComponent implements OnInit {
       episodeCode = this.episode.title;
     }
 
-    this.itunesApiService.getItem(term, mediaType as any, year, episodeCode)
-      .pipe(finalize(() => this.loading = false))
-      .subscribe(data => {
+    this.itunesApiService
+      .getItem(term, mediaType as any, year, episodeCode)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe((data) => {
         this.result = data;
       });
   }
 
   goTo(trackViewUrl: string) {
-    this.browserService.open(trackViewUrl);
-    logEvent('addon_itunes', {type: this.movie ? 'movie' : 'tv-show'});
+    BrowserService.open(trackViewUrl);
+    logEvent('addon_itunes', { type: this.movie ? 'movie' : 'tv-show' });
   }
 }

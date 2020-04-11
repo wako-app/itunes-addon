@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Episode, PluginLoaderService, Show } from '@wako-app/mobile-sdk';
+import { PluginLoaderService } from '../services/plugin-loader.service';
+import { Episode, Show } from '@wako-app/mobile-sdk';
 
 @Component({
   selector: 'app-tab1',
@@ -7,20 +8,32 @@ import { Episode, PluginLoaderService, Show } from '@wako-app/mobile-sdk';
   styleUrls: ['episode.page.scss']
 })
 export class EpisodePage implements OnInit {
-  @ViewChild('episodeRef', {read: ViewContainerRef, static: true})
+  @ViewChild('episodeRef', { read: ViewContainerRef, static: true })
   episodeVCRef: ViewContainerRef;
 
-  constructor(private pluginLoader: PluginLoaderService) {
-  }
+  @ViewChild('episodeItemOptionRef', { read: ViewContainerRef, static: true })
+  episodeItemOptionVCRef: ViewContainerRef;
+
+  @ViewChild('showRef', { read: ViewContainerRef, static: true })
+  showVCRef: ViewContainerRef;
+
+  data: { show: Show; episode: Episode };
+
+  constructor(private pluginLoader: PluginLoaderService) {}
 
   ngOnInit() {
+    this.data = JSON.parse(
+      `{"show":{"title":"The Witcher","year":2019,"imdbId":"tt5180504","tmdbId":71912,"tvdbId":362696,"traktId":138163,"slug":"the-witcher-2019","overview":"Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.","trailer":"http://youtube.com/watch?v=ndl1W4ltcmg","firstAired":"2019-12-20T08:00:00.000Z","runtime":60,"rating":8.5,"votes":2556,"language":"en","genres":["fantasy","science-fiction","drama"],"certification":"TV-MA","airedEpisodes":8,"images_url":{"poster":"https://image.tmdb.org/t/p/w300/zrPpUlehQaBf8YX2NrVrKK8IEpf.jpg","backdrop":"https://image.tmdb.org/t/p/w500/kysKBF2CJG9qfQDSCDaboJrkZy1.jpg","poster_original":"https://image.tmdb.org/t/p/original/zrPpUlehQaBf8YX2NrVrKK8IEpf.jpg","backdrop_original":"https://image.tmdb.org/t/p/original/kysKBF2CJG9qfQDSCDaboJrkZy1.jpg"},"status":"returning series","network":"Netflix","alternativeTitles":{"sa":"الساحر","bg":"Вещерът","cz":"Zaklínač","dk":"The Witcher","de":"The Witcher","gr":"Ο Γητευτής","us":"The Witcher","es":"The Witcher","mx":"The Witcher","ca":"The Witcher","fr":"The Witcher","il":"המכשף","hu":"Vaják","it":"The Witcher","kr":"위쳐","lt":"Raganius","nl":"The Witcher","pl":"Wiedźmin","br":"The Witcher","pt":"The Witcher","ro":"The Witcher","ru":"Ведьмак","sk":"Zaklínač","rs":"Вештац","se":"The Witcher","tr":"Cadı","ua":"Відьмак","cn":"猎魔人","tw":"獵魔士"},"originalTitle":"The Witcher"},"episode":{"traktSeasonNumber":1,"traktNumber":4,"absoluteNumber":4,"code":"S01E04","title":"Of Banquets, Bastards and Burials","imdbId":"tt8343772","tmdbId":1954614,"tvdbId":7428571,"traktId":3790232,"overview":"Against his better judgment, Geralt accompanies Jaskier to a royal ball. Ciri wanders into an enchanted forest. Yennefer tries to protect her charges.","firstAired":"2019-12-20T08:00:00.000Z","rating":8,"votes":2001,"runtime":60,"watched":false}}`
+    );
+
     this.loadPlugin();
   }
 
   loadPlugin() {
-    const data: { show: Show, episode: Episode } = JSON.parse(
-      `{"show":{"title":"Prison BreakZEZEAZE","year":2005,"imdbId":"tt0455275","tmdbId":2288,"tvdbId":360115,"traktId":2274,"slug":"prison-break","overview":"Due to a political conspiracy, an innocent man is sent to death row and his only hope is his brother, who makes it his mission to deliberately get himself sent to the same prison in order to break the both of them out, from the inside.","trailer":"http://youtube.com/watch?v=AL9zLctDJaU","firstAired":"2005-08-30T01:00:00.000Z","runtime":45,"rating":8.2,"votes":17275,"language":"en","genres":["drama","crime","action","adventure","suspense"],"certification":"TV-14","airedEpisodes":88,"images_url":{"poster":"https://image.tmdb.org/t/p/w300/5E1BhkCgjLBlqx557Z5yzcN0i88.jpg","backdrop":"https://image.tmdb.org/t/p/w500/92OPBZpLc82y8CzOtrQ8P9RDvIN.jpg","poster_original":"https://image.tmdb.org/t/p/original/5E1BhkCgjLBlqx557Z5yzcN0i88.jpg","backdrop_original":"https://image.tmdb.org/t/p/original/92OPBZpLc82y8CzOtrQ8P9RDvIN.jpg"},"alternativeTitles":{"sa":"Prison Break","bg":"Бягство от затвора","bs":"Prison Break","cz":"Útěk z vězení","dk":"Prison Break","de":"Prison Break","gr":"Η Απόδραση","us":"Prison Break","es":"Prison Break","mx":"Prison Break: En busca de la verdad","ir":"فرار از زندان","fi":"Pako","ca":"La Grande Évasion","fr":"Prison Break","il":"נמלטים","hu":"A szökés","it":"Prison Break","ge":"ციხიდან გაქცევა","kr":"프리즌 브레이크","lt":"Kalėjimo bėgliai","lv":"Izlaušanās","nl":"Prison Break","pl":"Skazany na śmierć","br":"Prison Break: Em Busca da Verdade","pt":"Prison Break","ro":"Evadarea din pușcărie","ru":"Побег","sk":"Prison Break: Útek z väzenia","si":"Prison Break","rs":"Бекство из затвора","se":"Prison Break","th":"Prison Break","tr":"Büyük Kaçış","ua":"Втеча з в'язниці","vn":"Prison Break","cn":"越狱","tw":"越獄風雲"},"originalTitle":"Prison Break"},"episode":{"traktSeasonNumber":1,"traktNumber":1,"code":"S01E01","title":"Pilot","imdbId":"tt0678483","tmdbId":168222,"tvdbId":7055372,"traktId":180255,"overview":"Michael Scofield is imprisoned in Fox River State Penitentiary. He finds his brother, Lincoln Burrows, who is a death row prisoner, and tells him that he is going to break them both out of the prison.","firstAired":"2005-08-30T01:00:00.000Z","rating":8,"votes":2609,"runtime":43,"watched":false}}`
-    );
-    this.pluginLoader.createComponent('episodes', this.episodeVCRef, data);
+    this.pluginLoader.createComponent('episodes', this.episodeVCRef, this.data);
+
+    this.pluginLoader.createComponent('episodes-item-option', this.episodeItemOptionVCRef, this.data);
+
+    this.pluginLoader.createComponent('shows', this.showVCRef, this.data);
   }
 }
