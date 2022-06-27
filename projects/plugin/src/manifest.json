@@ -6,11 +6,12 @@
   "description": "Add a button to rent/buy the content on iTunes",
   "author": "wako",
   "actions": ["movies", "episodes"],
-  "entryPointV2": "/plugin.js",
-  "entryPoint": "https://raw.githubusercontent.com/wako-app/itunes-addon/wako3/dist/plugin.js",
+  "entryPointV3": "/plugin.js",
+  "entryPointV2": "https://raw.githubusercontent.com/wako-app/itunes-addon/wako5/dist/plugin.js",
   "languages": {
     "en": "/i18n/en.json",
-    "fr": "/i18n/fr.json"
+    "fr": "/i18n/fr.json",
+    "de": "/i18n/de.json"
   },
   "changeLogs": {
     "1.0.5": "Handle pre-order",

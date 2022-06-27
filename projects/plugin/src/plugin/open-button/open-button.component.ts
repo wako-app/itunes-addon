@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BrowserService, Episode, Movie, Show } from '@wako-app/mobile-sdk';
-import { ItunesApiService, ItunesItemDto } from '../services/itunes-api.service';
 import { finalize } from 'rxjs/operators';
+import { ItunesApiService, ItunesItemDto } from '../services/itunes-api.service';
 import { logEvent } from '../services/tools';
 
 @Component({
@@ -25,7 +25,7 @@ export class OpenButtonComponent implements OnInit {
     this.loading = true;
     let mediaType = 'movie';
     let episodeCode = null;
-    const term = this.movie ? this.movie.title : this.show.title + ' season ' + this.episode.traktSeasonNumber;
+    const term = this.movie ? this.movie.title : this.show.title + ' season ' + this.episode.seasonNumber;
     const year = this.movie ? this.movie.year : null;
     if (this.show) {
       mediaType = 'tvShow';
